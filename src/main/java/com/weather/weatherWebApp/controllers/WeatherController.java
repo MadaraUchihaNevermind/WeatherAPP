@@ -4,12 +4,16 @@ import com.weather.weatherWebApp.controllers.WeatherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 @Controller
 public class WeatherController {
 
     @GetMapping("/weather")
-    public String showWeather(Model model) {
+    public String showWeather(Model model) throws IOException, ParserConfigurationException, SAXException {
         WeatherService weatherService = new WeatherService();
         weatherService.fetchWeatherData(); // Вызываем метод для получения данных о погоде
 

@@ -1,14 +1,19 @@
 package com.weather.weatherWebApp.controllers;
 
-import com.weather.weatherWebApp.models.WeatherDataEntity;
-import org.w3c.dom.Document;
 
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Statement;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 public class WeatherService {
     private String city;
@@ -17,9 +22,9 @@ public class WeatherService {
     private String feelsLike;
     private String humidity;
     private String pressure;
-    private String windSpeed ;
+    private String windSpeed;
     private String windDirection;
-    private String clouds ;
+    private String clouds;
     private String visibility;
     private String weatherValue;
     private String lastUpdate;
@@ -120,7 +125,7 @@ public class WeatherService {
         this.lastUpdate = lastUpdate;
     }
 
-    public void fetchWeatherData() {
+    public void fetchWeatherData() throws IOException, ParserConfigurationException, SAXException {
         try {
             URL url = new URL("https://api.openweathermap.org/data/2.5/weather?q=Gomel&mode=xml&appid=a6b7d1d5a4a62495b5935f875b3ae6cf");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -143,25 +148,44 @@ public class WeatherService {
             visibility = doc.getElementsByTagName("visibility").item(0).getAttributes().getNamedItem("value").getNodeValue();
             weatherValue = doc.getElementsByTagName("weather").item(0).getAttributes().getNamedItem("value").getNodeValue();
             lastUpdate = doc.getElementsByTagName("lastupdate").item(0).getAttributes().getNamedItem("value").getNodeValue();
+            saveWeatherDataToMySQL();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+    public void saveWeatherDataToMySQL() {
+        try {
+            String url = "jdbc:mysql://${MYSQL_HOST:localhost}:3306/weatherApp";
+            String username = "root";
+            String password = "";
+            Connection connection = DriverManager.getConnection(url, username, password);
 
-            WeatherDataEntity entity = new WeatherDataEntity();
-            entity.setCitydb(city);
-            entity.setCountrydb(country);
-            entity.setTemperaturedb(temperature);
-            entity.setFeelsLikedb(feelsLike);
-            entity.setHumiditydb(humidity);
-            entity.setPressuredb(pressure);
-            entity.setWindSpeeddb(windSpeed);
-            entity.setWindDirectiondb(windDirection);
-            entity.setCloudsdb(clouds);
-            entity.setVisibilitydb(visibility);
-            entity.setWeatherValuedb(weatherValue);
-            entity.setLastUpdatedb(lastUpdate);
+            // SQL-запрос для вставки данных
+            String insertQuery = "INSERT INTO weather_data (city, country, temperature, feels_like, humidity, pressure, wind_speed, wind_direction, clouds, visibility, weather_value, last_update) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            weatherDataService.saveWeatherDataToDatabase(entity);
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setString(1, city);
+            preparedStatement.setString(2, country);
+            preparedStatement.setString(3, temperature);
+            preparedStatement.setString(4, feelsLike);
+            preparedStatement.setString(5, humidity);
+            preparedStatement.setString(6, pressure);
+            preparedStatement.setString(7, windSpeed);
+            preparedStatement.setString(8, windDirection);
+            preparedStatement.setString(9, clouds);
+            preparedStatement.setString(10, visibility);
+            preparedStatement.setString(11, weatherValue);
+            preparedStatement.setString(12, lastUpdate);
 
+            // Выполнение SQL-запроса
+            preparedStatement.executeUpdate();
+
+            // Закрытие ресурсов
+            preparedStatement.close();
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
+
