@@ -1,6 +1,7 @@
 package com.weather.weatherWebApp.controllers;
 
 import com.weather.weatherWebApp.controllers.WeatherService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,8 @@ import java.io.IOException;
 
 @Controller
 public class WeatherController {
+    @Autowired
+    private WeatherDataService weatherDataService;
 
     @GetMapping("/weather")
     public String showWeather(Model model) throws IOException, ParserConfigurationException, SAXException {
@@ -30,6 +33,8 @@ public class WeatherController {
         String visibility = weatherService.getVisibility();
         String weatherValue = weatherService.getWeatherValue();
         String lastUpdate = weatherService.getLastUpdate();
+
+        weatherDataService.saveWeatherDataFromXML(weatherService);
 
         // Передача данных на страницу
         model.addAttribute("city", city);
