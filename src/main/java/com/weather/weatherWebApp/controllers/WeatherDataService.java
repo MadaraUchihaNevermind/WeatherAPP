@@ -13,6 +13,7 @@ public class WeatherDataService {
     @Autowired
     public WeatherDataService(WeatherDataRepository weatherDataRepository) {
         this.weatherDataRepository = weatherDataRepository;
+        System.out.println("wassup");
     }
 
     public void saveWeatherDataToDatabase(String city, String country, String temperature, String feelsLike, String humidity, String pressure, String windSpeed, String windDirection, String clouds, String visibility, String weatherValue, String lastUpdate) {
