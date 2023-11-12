@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Weather Information</h1>
+<p>City: <span th:text="${city}"></span></p>
+<p>Country: <span th:text="${country}"></span></p>
+<p>Temperature: <span th:text="${temperature}"></span></p>
+<p>Feels Like: <span th:text="${feelsLike}"></span></p>
+<p>Humidity: <span th:text="${humidity}"></span></p>
+<p>Pressure: <span th:text="${pressure}"></span></p>
+<p>Wind Speed: <span th:text="${windSpeed}"></span></p>
+<p>Wind Direction: <span th:text="${windDirection}"></span></p>
+<p>Clouds: <span th:text="${clouds}"></span></p>
+<p>Visibility: <span th:text="${visibility}"></span></p>
+<p>Weather Value: <span th:text="${weatherValue}"></span></p>
+<p>Last Update: <span th:text="${lastUpdate}"></span></p>
+</body>
+</html>
