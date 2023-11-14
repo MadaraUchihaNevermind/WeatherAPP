@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #map{
+            height: 400px;
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
 <h1>Weather Information</h1>
@@ -18,5 +24,24 @@
 <p>Visibility: <span th:text="${visibility}"></span></p>
 <p>Weather Value: <span th:text="${weatherValue}"></span></p>
 <p>Last Update: <span th:text="${lastUpdate}"></span></p>
+
+<div id="map"></div>
+<script>
+    function initMap()
+    {
+        var opt ={
+            center: {lat: 52.43047977231817, lng:31.004036799213377},
+            zoom: 4
+        }
+        const map = new google.maps.Map(document.getElementById("map"),opt);
+
+    }
+
+</script>
+
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK6zzPn-ZE8wsM963dWaP2r3M6onlduU8&callback=initMap&v=weekly" async
+        defer></script>
+
 </body>
 </html>
