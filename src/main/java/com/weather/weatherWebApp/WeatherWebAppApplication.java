@@ -1,7 +1,6 @@
 package com.weather.weatherWebApp;
 
 
-import com.weather.weatherWebApp.controllers.WeatherService;
 import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;

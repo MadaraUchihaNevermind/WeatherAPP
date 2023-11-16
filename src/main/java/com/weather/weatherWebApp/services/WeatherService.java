@@ -1,4 +1,4 @@
-package com.weather.weatherWebApp.controllers;
+package com.weather.weatherWebApp.services;
 
 
 import java.io.IOException;

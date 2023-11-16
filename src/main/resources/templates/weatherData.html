@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Data Table</title>
+    <link rel="stylesheet"  href="/css/Table.css">
+</head>
+<body>
+<h2>Weather Data Table</h2>
+
+<form method="get" action="/filter">
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" th:value="${cityFilter}" required>
+
+    <label for="startDate">Start Date:</label>
+    <input type="datetime-local" id="startDate" name="startDate" th:value="${startDateFilter}" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="datetime-local" id="endDate" name="endDate" th:value="${endDateFilter}" required>
+
+    <button type="submit">Filter</button>
+</form>
+
+<!-- Таблица данных -->
+<table class="table">
+    <thead>
+    <tr>
+        <th>City</th>
+        <th>Country</th>
+        <th>Temperature</th>
+        <!-- Добавьте другие заголовки для полей -->
+        <th>Last Update</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Используйте Thymeleaf для итерации по списку данных и заполнения таблицы -->
+    <tr th:each="weatherData : ${weatherDataList}">
+        <td th:text="${weatherData.city}"></td>
+        <td th:text="${weatherData.country}"></td>
+        <td th:text="${weatherData.temperature}"></td>
+        <!-- Добавьте другие ячейки для полей -->
+        <td th:text="${weatherData.lastUpdate}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

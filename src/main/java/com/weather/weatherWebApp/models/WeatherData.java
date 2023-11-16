@@ -1,10 +1,14 @@
 package com.weather.weatherWebApp.models;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
+
+import java.time.LocalDateTime;
+
 
 @Entity
 public class WeatherData {
@@ -23,7 +27,8 @@ public class WeatherData {
     private String clouds;
     private String visibility;
     private String weatherValue;
-    private String lastUpdate;
+
+    private LocalDateTime lastUpdate;
 
     public String getCity() {
         return city;
@@ -113,11 +118,11 @@ public class WeatherData {
         this.weatherValue = weatherValue;
     }
 
-    public String getLastUpdate() {
+    public LocalDateTime getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(String lastUpdate) {
+    public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
