@@ -2,46 +2,45 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
     <title>Title</title>
-    <style>
-        #map{
-            height: 400px;
-            width: 500px;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href ="/css/style.css">
+
+
 </head>
 <body>
-<h1>Weather Information</h1>
-<p>City: <span th:text="${city}"></span></p>
-<p>Country: <span th:text="${country}"></span></p>
-<p>Temperature: <span th:text="${temperature}"></span></p>
-<p>Feels Like: <span th:text="${feelsLike}"></span></p>
-<p>Humidity: <span th:text="${humidity}"></span></p>
-<p>Pressure: <span th:text="${pressure}"></span></p>
-<p>Wind Speed: <span th:text="${windSpeed}"></span></p>
-<p>Wind Direction: <span th:text="${windDirection}"></span></p>
-<p>Clouds: <span th:text="${clouds}"></span></p>
-<p>Visibility: <span th:text="${visibility}"></span></p>
-<p>Weather Value: <span th:text="${weatherValue}"></span></p>
-<p>Last Update: <span th:text="${lastUpdate}"></span></p>
 
-<div id="map"></div>
-<script>
-    function initMap()
-    {
-        var opt ={
-            center: {lat: 52.43047977231817, lng:31.004036799213377},
-            zoom: 4
-        }
-        const map = new google.maps.Map(document.getElementById("map"),opt);
+<div class="container">
+    <img src="/jpg/map.jpg"/>
+    <button id="open-modal-btn"> GOMEL</button>
+</div>
+<div class="modal" id ="my-modal">
+    <div class="modal__box">
+        <button class ="modal__close-btn" id="close-my-modal-btn">
+            <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z" fill="#333333"></path>
+                <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333"></path>
+            </svg>
+        </button>
+        <h2>Weather Gomel</h2>
+        <p>City: <span th:text="${city}"></span></p>
+        <p>Country: <span th:text="${country}"></span></p>
+        <p>Temperature: <span th:text="${temperature}"></span></p>
+        <p>Feels Like: <span th:text="${feelsLike}"></span></p>
+        <p>Humidity: <span th:text="${humidity}"></span></p>
+        <p>Pressure: <span th:text="${pressure}"></span></p>
+        <p>Wind Speed: <span th:text="${windSpeed}"></span></p>
+        <p>Wind Direction: <span th:text="${windDirection}"></span></p>
+        <p>Clouds: <span th:text="${clouds}"></span></p>
+        <p>Visibility: <span th:text="${visibility}"></span></p>
+        <p>Weather Value: <span th:text="${weatherValue}"></span></p>
+        <p>Last Update: <span th:text="${lastUpdate}"></span></p>
+    </div>
+</div>
 
-    }
-
-</script>
-
-<script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK6zzPn-ZE8wsM963dWaP2r3M6onlduU8&callback=initMap&v=weekly" async
-        defer></script>
+<script defer src ="/js/index.js"></script>
 
 </body>
 </html>
