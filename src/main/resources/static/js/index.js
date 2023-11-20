@@ -23,3 +23,29 @@ document.getElementById("my-modal").addEventListener('click', event => {
     if (event._isClickWithInModal) return;
     event.currentTarget.classList.remove('open');
 });
+
+
+document.getElementById("open-modal-btn2").addEventListener("click", function() {
+    document.getElementById("my-modal2").classList.add("open")
+})
+
+// Закрыть модальное окно
+document.getElementById("close-my-modal-btn2").addEventListener("click", function() {
+    document.getElementById("my-modal2").classList.remove("open")
+})
+
+// Закрыть модальное окно при нажатии на Esc
+window.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+        document.getElementById("my-modal2").classList.remove("open")
+    }
+});
+
+// Закрыть модальное окно при клике вне его
+document.querySelector("#my-modal .modal__box").addEventListener('click', event => {
+    event._isClickWithInModal = true;
+});
+document.getElementById("my-modal2").addEventListener('click', event => {
+    if (event._isClickWithInModal) return;
+    event.currentTarget.classList.remove('open');
+});

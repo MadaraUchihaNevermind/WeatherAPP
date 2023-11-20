@@ -13,6 +13,13 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 public class WeatherService {
+
+    private String urlCity;
+    public WeatherService(String url)
+    {
+        this.urlCity = url;
+
+    }
     private String city;
     private String country;
     private String temperature;
@@ -124,7 +131,7 @@ public class WeatherService {
 
     public void fetchWeatherData() throws IOException, ParserConfigurationException, SAXException {
         try {
-            URL url = new URL("https://api.openweathermap.org/data/2.5/weather?q=Gomel&mode=xml&appid=a6b7d1d5a4a62495b5935f875b3ae6cf");
+            URL url = new URL("https://api.openweathermap.org/data/2.5/weather?q="+urlCity+"&mode=xml&appid=a6b7d1d5a4a62495b5935f875b3ae6cf");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
