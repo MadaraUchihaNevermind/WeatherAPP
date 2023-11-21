@@ -3,32 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Data Table</title>
-    <link rel="stylesheet" href="/css/Table.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/archive.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-<h2>Weather Data Table</h2>
+<div class="container">
+    <h2>Архив данных о погоде</h2>
 
-<form method="get" action="/filter">
-    <label for="city">City:</label>
-    <input type="text" id="city" name="city" th:value="${cityFilter}" required>
+    <form method="get" action="/filter">
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" class="form-control" id="city" name="city" th:value="${cityFilter}" required>
+        </div>
 
-    <label for="startDate">Start Date:</label>
-    <input type="datetime-local" id="startDate" name="startDate" th:value="${startDateFilter}" required>
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="datetime-local" class="form-control" id="startDate" name="startDate" th:value="${startDateFilter}" required>
+        </div>
 
-    <label for="endDate">End Date:</label>
-    <input type="datetime-local" id="endDate" name="endDate" th:value="${endDateFilter}" required>
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="datetime-local" class="form-control" id="endDate" name="endDate" th:value="${endDateFilter}" required>
+        </div>
 
-    <button type="submit">Filter</button>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
 
-</form>
+    <form id="downloadForm" action="/download-excel" method="POST">
+        <input type="hidden" name="city" th:value="${cityFilter}" />
+        <input type="hidden" name="startDate" th:value="${startDateFilter}" />
+        <input type="hidden" name="endDate" th:value="${endDateFilter}" />
+        <button type="button" class="btn btn-warning" onclick="downloadExcel()">Download Excel</button>
+    </form>
 
-<form id="downloadForm" action="/download-excel" method="POST">
-    <input type="hidden" name="city" th:value="${cityFilter}" />
-    <input type="hidden" name="startDate" th:value="${startDateFilter}" />
-    <input type="hidden" name="endDate" th:value="${endDateFilter}" />
-    <button type="button" onclick="downloadExcel()">Скачать в Excel</button>
-</form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>City</th>
+            <th>Country</th>
+            <th>Temperature</th>
+            <th>Last Update</th>
+            <!-- Add other headers for fields -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="weatherData : ${weatherDataList}">
+            <td th:text="${weatherData.city}"></td>
+            <td th:text="${weatherData.country}"></td>
+            <td th:text="${weatherData.temperature}"></td>
+            <td th:text="${weatherData.lastUpdate}"></td>
+            <!-- Add other cells for fields -->
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 <script>
     function downloadExcel() {
@@ -52,31 +81,10 @@
                 }
             },
             error: function (error) {
-                console.error('Заполните поля фильтрации', error);
+                console.error('Fill in the filter fields', error);
             }
         });
     }
 </script>
-
-<table class="table">
-    <thead>
-    <tr>
-        <th>City</th>
-        <th>Country</th>
-        <th>Temperature</th>
-        <th>Last Update</th>
-        <!-- Добавьте другие заголовки для полей -->
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="weatherData : ${weatherDataList}">
-        <td th:text="${weatherData.city}"></td>
-        <td th:text="${weatherData.country}"></td>
-        <td th:text="${weatherData.temperature}"></td>
-        <td th:text="${weatherData.lastUpdate}"></td>
-        <!-- Добавьте другие ячейки для полей -->
-    </tr>
-    </tbody>
-</table>
 </body>
 </html>
