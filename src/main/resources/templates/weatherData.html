@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Data Table</title>
-    <link rel="stylesheet"  href="/css/Table.css">
+    <link rel="stylesheet" href="/css/Table.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 <h2>Weather Data Table</h2>
@@ -19,27 +20,61 @@
     <input type="datetime-local" id="endDate" name="endDate" th:value="${endDateFilter}" required>
 
     <button type="submit">Filter</button>
+
 </form>
 
-<!-- Таблица данных -->
+<form id="downloadForm" action="/download-excel" method="POST">
+    <input type="hidden" name="city" th:value="${cityFilter}" />
+    <input type="hidden" name="startDate" th:value="${startDateFilter}" />
+    <input type="hidden" name="endDate" th:value="${endDateFilter}" />
+    <button type="button" onclick="downloadExcel()">Скачать в Excel</button>
+</form>
+
+<script>
+    function downloadExcel() {
+        var city = document.getElementById('city').value;
+        var startDate = document.getElementById('startDate').value;
+        var endDate = document.getElementById('endDate').value;
+
+        $.ajax({
+            type: 'POST',
+            url: '/download-excel',
+            data: {
+                city: city,
+                startDate: startDate,
+                endDate: endDate
+            },
+            success: function (response) {
+                if (response.startsWith("Ошибка")) {
+                    alert(response);
+                } else {
+                    document.getElementById('downloadForm').submit();
+                }
+            },
+            error: function (error) {
+                console.error('Заполните поля фильтрации', error);
+            }
+        });
+    }
+</script>
+
 <table class="table">
     <thead>
     <tr>
         <th>City</th>
         <th>Country</th>
         <th>Temperature</th>
-        <!-- Добавьте другие заголовки для полей -->
         <th>Last Update</th>
+        <!-- Добавьте другие заголовки для полей -->
     </tr>
     </thead>
     <tbody>
-    <!-- Используйте Thymeleaf для итерации по списку данных и заполнения таблицы -->
     <tr th:each="weatherData : ${weatherDataList}">
         <td th:text="${weatherData.city}"></td>
         <td th:text="${weatherData.country}"></td>
         <td th:text="${weatherData.temperature}"></td>
-        <!-- Добавьте другие ячейки для полей -->
         <td th:text="${weatherData.lastUpdate}"></td>
+        <!-- Добавьте другие ячейки для полей -->
     </tr>
     </tbody>
 </table>
