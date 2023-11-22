@@ -7,14 +7,16 @@
     <title>Title</title>
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href ="/css/style.css">
+    <a href="weatherData.html.html"></a>.
 
 
 </head>
 <body>
 
 <div class="container">
-    <img src="/jpg/map.jpg"/>
-    <button id="open-modal-btn"> GOMEL</button>
+    <img src="/jpg/rb.png"/>
+    <button class="open-modal-btn" id ="open-modal-btn" > Gomel </button>
+
 </div>
 <div class="modal" id ="my-modal">
     <div class="modal__box">
@@ -42,7 +44,7 @@
 
 
 <div class="container">
-    <button id="open-modal-btn2"> MINSK</button>
+    <button class="open-modal-btn2" id ="open-modal-btn2" > Minsk </button>
 </div>
 <div class="modal" id ="my-modal2">
     <div class="modal__box">
@@ -69,6 +71,124 @@
 </div>
 
 
+
+<div class="container">
+    <button class="open-modal-btn3" id ="open-modal-btn3" > Brest </button>
+</div>
+<div class="modal" id ="my-modal3">
+    <div class="modal__box">
+        <button class ="modal__close-btn" id="close-my-modal-btn3">
+            <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z" fill="#333333"></path>
+                <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333"></path>
+            </svg>
+        </button>
+        <h2>Weather Brest</h2>
+        <p>City: <span th:text="${city2}"></span></p>
+        <p>Country: <span th:text="${country2}"></span></p>
+        <p>Temperature: <span th:text="${temperature2}"></span></p>
+        <p>Feels Like: <span th:text="${feelsLike2}"></span></p>
+        <p>Humidity: <span th:text="${humidity2}"></span></p>
+        <p>Pressure: <span th:text="${pressure2}"></span></p>
+        <p>Wind Speed: <span th:text="${windSpeed2}"></span></p>
+        <p>Wind Direction: <span th:text="${windDirection2}"></span></p>
+        <p>Clouds: <span th:text="${clouds2}"></span></p>
+        <p>Visibility: <span th:text="${visibility2}"></span></p>
+        <p>Weather Value: <span th:text="${weatherValue2}"></span></p>
+        <p>Last Update: <span th:text="${lastUpdate2}"></span></p>
+    </div>
+</div>
+
+
+<div class="container">
+    <button class="open-modal-btn4" id ="open-modal-btn4" > Vitebsk </button>
+</div>
+<div class="modal" id ="my-modal4">
+    <div class="modal__box">
+        <button class ="modal__close-btn" id="close-my-modal-btn4">
+            <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z" fill="#333333"></path>
+                <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333"></path>
+            </svg>
+        </button>
+        <h2>Weather Vitebsk</h2>
+        <p>City: <span th:text="${city3}"></span></p>
+        <p>Country: <span th:text="${country3}"></span></p>
+        <p>Temperature: <span th:text="${temperature3}"></span></p>
+        <p>Feels Like: <span th:text="${feelsLike3}"></span></p>
+        <p>Humidity: <span th:text="${humidity3}"></span></p>
+        <p>Pressure: <span th:text="${pressure3}"></span></p>
+        <p>Wind Speed: <span th:text="${windSpeed3}"></span></p>
+        <p>Wind Direction: <span th:text="${windDirection3}"></span></p>
+        <p>Clouds: <span th:text="${clouds3}"></span></p>
+        <p>Visibility: <span th:text="${visibility3}"></span></p>
+        <p>Weather Value: <span th:text="${weatherValue3}"></span></p>
+        <p>Last Update: <span th:text="${lastUpdate3}"></span></p>
+    </div>
+</div>
+
+
+<div class="container">
+    <button class="open-modal-btn5" id ="open-modal-btn5" > Mogilev </button>
+</div>
+<div class="modal" id ="my-modal5">
+    <div class="modal__box">
+        <button class ="modal__close-btn" id="close-my-modal-btn5">
+            <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z" fill="#333333"></path>
+                <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333"></path>
+            </svg>
+        </button>
+        <h2>Weather Mogilev</h2>
+        <p>City: <span th:text="${city4}"></span></p>
+        <p>Country: <span th:text="${country4}"></span></p>
+        <p>Temperature: <span th:text="${temperature4}"></span></p>
+        <p>Feels Like: <span th:text="${feelsLike4}"></span></p>
+        <p>Humidity: <span th:text="${humidity4}"></span></p>
+        <p>Pressure: <span th:text="${pressure4}"></span></p>
+        <p>Wind Speed: <span th:text="${windSpeed4}"></span></p>
+        <p>Wind Direction: <span th:text="${windDirection4}"></span></p>
+        <p>Clouds: <span th:text="${clouds4}"></span></p>
+        <p>Visibility: <span th:text="${visibility4}"></span></p>
+        <p>Weather Value: <span th:text="${weatherValue4}"></span></p>
+        <p>Last Update: <span th:text="${lastUpdate4}"></span></p>
+    </div>
+</div>
+
+
+<div class="container">
+    <button class="open-modal-btn6" id ="open-modal-btn6" > Grodno </button>
+</div>
+<div class="modal" id ="my-modal6">
+    <div class="modal__box">
+        <button class ="modal__close-btn" id="close-my-modal-btn6">
+            <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z" fill="#333333"></path>
+                <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333"></path>
+            </svg>
+        </button>
+        <h2>Weather Grodno</h2>
+        <p>City: <span th:text="${city5}"></span></p>
+        <p>Country: <span th:text="${country5}"></span></p>
+        <p>Temperature: <span th:text="${temperature5}"></span></p>
+        <p>Feels Like: <span th:text="${feelsLike5}"></span></p>
+        <p>Humidity: <span th:text="${humidity5}"></span></p>
+        <p>Pressure: <span th:text="${pressure5}"></span></p>
+        <p>Wind Speed: <span th:text="${windSpeed5}"></span></p>
+        <p>Wind Direction: <span th:text="${windDirection5}"></span></p>
+        <p>Clouds: <span th:text="${clouds5}"></span></p>
+        <p>Visibility: <span th:text="${visibility5}"></span></p>
+        <p>Weather Value: <span th:text="${weatherValue5}"></span></p>
+        <p>Last Update: <span th:text="${lastUpdate5}"></span></p>
+    </div>
+</div>
 <script defer src ="/js/index.js"></script>
+<script>
+    function goToWeatherData() {
+        window.location.href = "weatherData";
+    }
+</script>
+
+<button onclick="goToWeatherData()">Перейти к данным о погоде</button>
 
 </body>

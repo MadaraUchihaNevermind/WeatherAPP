@@ -27,6 +27,162 @@ body {
     padding: 0 15px;
 }
 
+/*Гомель*/
+.open-modal-btn
+{
+    position: absolute;
+    top: 520px;
+    right: 530px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffd500;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+.open-modal-btn:hover
+{
+    background-color: lightblue;
+}
+
+.open-modal-btn:active
+{
+    background-color: royalblue;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+/*Минск*/
+.open-modal-btn2
+{
+    position: absolute;
+    top: -400px;
+    right:750px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffd500;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+.open-modal-btn2:hover
+{
+    background-color: lightblue;
+}
+
+.open-modal-btn2:active
+{
+    background-color: royalblue;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+/*Брест*/
+.open-modal-btn3
+{
+    position: absolute;
+    top: -190px;
+    right:1050px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffd500;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+.open-modal-btn3:hover
+{
+    background-color: lightblue;
+}
+
+.open-modal-btn3:active
+{
+    background-color: royalblue;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+/*Витебск*/
+.open-modal-btn4
+{
+    position: absolute;
+    top: -600px;
+    right:580px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffd500;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+.open-modal-btn4:hover
+{
+    background-color: lightblue;
+}
+
+.open-modal-btn4:active
+{
+    background-color: royalblue;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+/*Могилев*/
+.open-modal-btn5
+{
+    position: absolute;
+    top: -400px;
+    right:550px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffd500;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+.open-modal-btn5:hover
+{
+    background-color: lightblue;
+}
+
+.open-modal-btn5:active
+{
+    background-color: royalblue;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+
+/*Гродно*/
+.open-modal-btn6
+{
+    position: absolute;
+    top: -380px;
+    right:1060px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffd500;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+.open-modal-btn6:hover
+{
+    background-color: lightblue;
+}
+
+.open-modal-btn6:active
+{
+    background-color: royalblue;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+
+.container{
+    position: relative;
+}
+
 .modal {
     position: fixed;
     left: 0;
